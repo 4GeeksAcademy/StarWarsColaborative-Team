@@ -2,3 +2,8 @@
     General Styles
 */
 
+.dropdown-menu[data-bs-popper] {
+    top: 100% !important;
+    right: 0 !important;
+    margin-top: .125rem !important;
+}
