@@ -20,16 +20,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 		// EMPIEZA DESDE >> 21 a 50  FAVORITOS >>> RODRI
 		guardarFavoritos: async (NameFav) => {
-			setStore({...getStore(),favoritos:[...getStore().favoritos,NameFav]})
+			let existElement = false
+			getStore().favoritos.map((element)=>{
+				if(NameFav === element) {
+					return existElement = true
+				}
+			})
 
-
-
-
-
-
-
-
-
+			if(existElement === false) {
+				setStore({...getStore(),favoritos:[...getStore().favoritos,NameFav]})
+			}
 
 
 
@@ -209,6 +209,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 			} catch (error) {
 				console.log(error)
 			}
+		},
+		BorrarFavorito:(elements)=> {
+			const Favs = getStore().favoritos
+
+			const newArr = Favs.filter((item)=> {
+				return item!== elements
+			})
+
+			setStore({...getStore(),favoritos:newArr})
 		}
 
 		}

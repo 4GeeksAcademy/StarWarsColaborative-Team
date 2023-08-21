@@ -6,6 +6,8 @@ import {MdDelete} from "react-icons/md"
 export const Navbar = () => {
 	const {store,actions} = useContext(Context)
 	const { favoritos } = store
+	const {BorrarFavorito } = actions
+
 	const navigate = useNavigate()
 	return (
 		<nav className="navbar navbar-light bg-light mb-3 mx-3">
@@ -24,7 +26,7 @@ export const Navbar = () => {
 						<h3>Favoritos</h3>
 						{
 							favoritos[0]? favoritos.map((item)=>{
-								return <p className="d-flex flex-row justify-content-between align-content-center">{item} <button className="bg-transparent border-0"> <MdDelete/></button></p>
+								return <p className="d-flex flex-row justify-content-between align-content-center">{item} <button onClick={()=> BorrarFavorito(item)} className="bg-transparent border-0"> <MdDelete/></button></p>
 							}) : <p className="text-dark">No hay Favoritos</p>
 						}
 
