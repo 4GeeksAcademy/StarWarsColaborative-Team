@@ -1,7 +1,7 @@
 import React ,{useEffect, useState, useContext} from "react";
 // CARD + MAP
 
-const Vehiculos =()=> {
+const Planetas =()=> {
 
 
 
@@ -15,4 +15,4 @@ const Vehiculos =()=> {
 }
 
 
-export default Vehiculos
+export default Planetas
