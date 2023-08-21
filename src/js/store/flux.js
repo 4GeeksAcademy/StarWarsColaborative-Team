@@ -10,8 +10,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			vehicles: [],
 			planets: [],
 			films: [],
-			starships: []
-
+			starships: [],
+			PageInfo:undefined
 		},
 		actions: {
 
@@ -19,8 +19,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 		// EMPIEZA DESDE >> 21 a 50  FAVORITOS >>> RODRI
-		guardarFavoritos: async () => {
-			
+		guardarFavoritos: async (NameFav) => {
+			setStore({...getStore(),favoritos:[...getStore().favoritos,NameFav]})
 
 
 
@@ -50,22 +50,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		// EMPIEZA DESDE >> 51 a 80  PEOPLE >>> RODRI
 		obtenerPersonas: async () => {
+			console.log("xd")
+			try {
+				const resp = await fetch("https://swapi.dev/api/people")
+				const data = await resp.json()
+				const store = getStore()
+				if(data) {
+					data.results.map((item,index)=> {
+						const uid = index + 1
+						return setStore({...store,peoples:[...store.peoples,{...item,uid:uid}]})
+					})
+				}
+				console.log(store)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+			} catch (error) {
+				
+			}
 
 
 
@@ -198,6 +198,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			
 			},
+		// EMPIEZA DESDE >> 201 a 200  Funcion que filtre datos en base a id >>> Rodrigo
+		TraerInfoEspesifica:async(uid,tipo)=> {
+			try {
+				const resp = await fetch(`https://swapi.dev/api/${tipo}/${uid}`)
+				const data = await resp.json()
+				console.log(data)
+				setStore({...getStore(),PageInfo:data})
+				
+			} catch (error) {
+				console.log(error)
+			}
+		}
+
 		}
 	}
 }
