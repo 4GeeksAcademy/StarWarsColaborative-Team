@@ -9,10 +9,23 @@ import { SiStarship } from 'react-icons/si';
 const Vehiculos =()=> {
     const { store, actions } = useContext(Context);
 
-    console.log("probando en Vehiculos: ", store)
+    console.log("TEST en Vehiculos: ", store.vehicles)
 
+    const getItemId = (item) =>{
+        const id = item.split('/').pop(); 
+        return id.toString();
+        console.log("PROBRANDO LA FUNCION GETITEMID: ", item, id)
+    }
 
-
+    const stylePadre = {
+        width: "100%",
+        overflowX: "scroll",
+        overscrollBehaviorX: "contain",
+        scrollSnapType: "x proximity",
+        maxWidth: "100%",
+        display: "flex",
+        flexDirection: "row"
+    }
 
     return(
         <div>
@@ -29,42 +42,45 @@ const Vehiculos =()=> {
             */}
 
             <div className="row">
-                <div className="col-12">
+                <div className="col-12 " style={stylePadre}>
                     
                 {store.vehicles.map((item, index) => (  
                     <div key={index} className="card mx-3" style={{ width: "400px", minWidth: "300px", display: "inline-block" }} >
-                            <div className="bg-secondary d-flex flex-row justify-content-center align-items-center" style={{ width: "100%", height: "200px" }}>
+                            <div key={index} className="bg-secondary d-flex flex-row justify-content-center align-items-center" style={{ width: "100%", height: "200px" }}>
+                            {/* <img src="https://starwars-visualguide.com/assets/img/characters/1.jpg" className="card-img-top" alt="..." style={{ fontWeight: "bold", fontSize: "25px" }}/> */}
                                 <p style={{ fontWeight: "bold", fontSize: "25px" }} className="text-light">400x200</p>
                             </div>
 
-                            <div className="card-body">
+                            <div key={index} className="card-body">
                                 <h5 className="card-title">{item.name}</h5>
                                 <p className="card-text p-0 m-1 col-12">{item.model}</p>
                                 <p className="card-text p-0 m-1 col-12">{item.vehicle_class}</p>
                                 <p className="card-text p-0 m-1 col-12">{item.crew}</p>
                                 <p className="card-text p-0 m-1 col-12">{item.cargo_capacity}</p>
                                 <p className="card-text p-0 m-1 col-12">{item.manufacturer}</p>
+                                <p className="card-text p-0 m-1 col-12">{item.url}</p>
+                                <p className="card-text p-0 m-1 col-12">{() => getItemId(item.url)}</p>
+                                
                                 <div className="d-flex flex-row justify-content-between">
 
                                 <a href="#" className="btn btn-primary">
                                  Ir a Detalles
                                 </a>
+
                                 {/* <a onClick={ShowInfo} href="#" className="btn btn-outline-primary">Learn More</a>
                                 <button onClick={()=>guardarFavoritos(info.name)} className="btn btn-outline-warning ml-auto">
                                     <AiOutlineHeart  />
                                 </button> */}
-
                                 </div>
                             </div>
                     </div>
-
                 ))} 
                 </div>
             </div>
 
             {/* {store.vehicles.map((item, index) => (
             <div key={index} className="card" style={{width: '18rem'}}>
-                <img src="..." className="card-img-top" alt="..." />
+                <img src="https://starwars-visualguide.com/assets/img/characters/1.jpg" className="card-img-top" alt="..." />
                 <div className="card-body">
                 <h5 className="card-title">{item.name}</h5>
                 <p className="card-text">{item.model}</p>

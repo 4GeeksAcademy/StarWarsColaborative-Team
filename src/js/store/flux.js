@@ -81,12 +81,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 		// EMPIEZA DESDE >> 81 a 110  VEHICLES >>> MATIAS
 		obtenerVehiculos: async () => {
 
-
+				
 			try {
 				const response = await fetch(`https://swapi.dev/api/vehicles/`)
 				const data = await response.json()
 				setStore({vehicles: data.results })
-				console.log("data Vehiculos: ", data.results)
+				// console.log("data Vehiculos: ", data.results) // FUNCIONA
 			} catch (error) {
 				console.log(error)
 			}
