@@ -32,7 +32,7 @@ const Layout = () => {
 
 						<Route path="/infoPageRodrigo/:theid" element={<InfoPageRodrigo />} />
 						<Route path="/infoPageMatias" element={<InfoPageMatias />} />
-						<Route path="/infoPageJuan/:planetUid" element={<InfoPageJuan />} />
+						<Route path="/infoPageJuan/:theid" element={<InfoPageJuan />} />
 						<Route path="/infoPageKarol" element={<InfoPageKarol />} />
 						<Route path="/infoPageYoselin" element={<InfoPageYoselin />} />
 

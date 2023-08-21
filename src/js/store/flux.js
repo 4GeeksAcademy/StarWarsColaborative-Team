@@ -201,7 +201,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 		// EMPIEZA DESDE >> 201 a 200  Funcion que filtre datos en base a id >>> Rodrigo
 		TraerInfoEspesifica:async(uid,tipo)=> {
+			console.log(`Estas buscando la api aca https://swapi.dev/api/${tipo}/${uid}`)
 			try {
+				console.log(`Estas buscando la api aca https://swapi.dev/api/${tipo}/${uid}`)
 				const resp = await fetch(`https://swapi.dev/api/${tipo}/${uid}`)
 				const data = await resp.json()
 				console.log(data)
