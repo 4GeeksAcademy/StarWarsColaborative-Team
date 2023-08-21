@@ -1,45 +1,205 @@
+import { object } from "prop-types"
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			
+			// EMPIEZA DESDE >> vehicles: [{...},{...},{...},{...}]
+			favoritos: [],
+			peoples: [],
+			vehicles: [],
+			planets: [],
+			films: [],
+			starships: []
+
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
 
-				//reset the global store
-				setStore({ demo: demo });
-			}
+
+
+		// EMPIEZA DESDE >> 21 a 50  FAVORITOS >>> RODRI
+		guardarFavoritos: async () => {
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		},
+		// EMPIEZA DESDE >> 51 a 80  PEOPLE >>> RODRI
+		obtenerPersonas: async () => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		},
+		// EMPIEZA DESDE >> 81 a 110  VEHICLES >>> MATIAS
+		obtenerVehiculos: async () => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		},
+		// EMPIEZA DESDE >> 111 a 140  PLANETS >>> JUAN
+		obtenerPlanetas: async () => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		},
+		// EMPIEZA DESDE >> 141 a 170  FILMS >>> KAROL
+		obtenerPeliculas: async () => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		},
+		// EMPIEZA DESDE >> 171 a 200  STARSHIPS >>> YOSELIN
+		obtenerNaves: async () => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
+			},
 		}
-	};
-};
+	}
+}
 
-export default getState;
+export default getState
