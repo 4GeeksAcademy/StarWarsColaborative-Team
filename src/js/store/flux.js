@@ -82,14 +82,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 		obtenerVehiculos: async () => {
 
 
-
-
-
-
-
-
-
-
+			try {
+				const response = await fetch(`https://swapi.dev/api/vehicles/`)
+				const data = await response.json()
+				setStore({vehicles: data.results })
+				console.log("data Vehiculos: ", data.results)
+			} catch (error) {
+				console.log(error)
+			}
 
 
 
