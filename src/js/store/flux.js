@@ -110,36 +110,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		// EMPIEZA DESDE >> 111 a 140  PLANETS >>> JUAN
 		obtenerPlanetas: async () => {
+			const url = 'https://www.swapi.tech/api/planets';
+			try {
+			  const response = await fetch(url);
+			  const data = await response.json();
+		  
+			  const planetsWithDetails = await Promise.all(
+				data.results.map(async (planet) => {
+				  const detailResponse = await fetch(planet.url);
+				  const detailData = await detailResponse.json();
+				  return {
+					...planet,
+					properties: detailData.result.properties 
+				  };
+				})
+			  );
+			  setStore({ planets: planetsWithDetails });
+			} catch (error) {
+			  console.error('Ocurrió un error:', error);
+			}
+		  },
+		  
+		  
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		},
+		  
 		// EMPIEZA DESDE >> 141 a 170  FILMS >>> KAROL
 		obtenerPeliculas: async () => {
+			
 
 
 
