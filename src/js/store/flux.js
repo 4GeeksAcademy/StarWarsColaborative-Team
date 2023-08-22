@@ -7,7 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// EMPIEZA DESDE >> vehicles: [{...},{...},{...},{...}]
 			favoritos: [],
 			peoples: [],
-			vehicles: [],
+			vehicles: [], // si recargo pagina pierdo por unos segundos hasta que se vuelva a llamar
 			planets: [],
 			films: [],
 			starships: [],
@@ -82,7 +82,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 		getIdfromUrl: itemUrl => { // RECIBE UNA URL ej. https: // swapi.dev / api /vehicles / 4 / y le saca el numero 👹 
 			const urlParts = itemUrl.split('/') // separa la string que llega por los / que tenga y devuelve un array de stringsssss ✨
-			return urlParts[urlParts.length - 2] // VAMO LOS PIBEEE FUNCIONAAAAA 👹
+			return urlParts[urlParts.length - 2]
 		  },
 	
 		obtenerVehiculos: async () => {
@@ -100,11 +100,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}
 		},
 
-		getItemById:(id) => {
-			console.log("TESTING .... ", getStore().vehicles.find(item => item.id === id)) // buscamos el objeto en la lista de obj vehiculos
-			return getStore().vehicles
-			//.find(item => item.id === id)
-		},
+
+
+
+
+
 
 
 

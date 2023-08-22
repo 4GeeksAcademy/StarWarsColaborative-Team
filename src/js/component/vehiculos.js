@@ -24,8 +24,9 @@ const Vehiculos =()=> {
 
     return(
         <div>
+            {/* react icons
             <AiFillDingtalkSquare style={{color:"red", fontSize:"100px"}} />
-            <SiStarship style={{color:"red", fontSize:"100px"}} />
+            <SiStarship style={{color:"red", fontSize:"100px"}} /> */}
 
             {/* 
             "name": "Sand Crawler"
@@ -43,7 +44,7 @@ const Vehiculos =()=> {
                     <div key={index} className="card mx-3" style={{ width: "400px", minWidth: "300px", display: "inline-block" }} >
                             <div key={index} className="bg-secondary d-flex flex-row justify-content-center align-items-center" style={{ width: "100%", height: "200px" }}>
                             <img src={ `https://starwars-visualguide.com/assets/img/vehicles/${item.id}.jpg` } className="card-img-top" alt="..." style={{ fontWeight: "bold", fontSize: "25px" }}/>
-                                {/* <p style={{ fontWeight: "bold", fontSize: "25px" }} className="text-light">400x200</p> */}
+                                {/* <p style={{ fontWeight: "bold", fontSize: "25px" }} className="text-light">400x200</p> */}                               
                             </div>
 
                             <div key={index} className="card-body">
@@ -68,6 +69,7 @@ const Vehiculos =()=> {
                             </div>
                     </div>
                 ))} 
+
                 </div>
             </div>
 
