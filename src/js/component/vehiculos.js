@@ -11,12 +11,6 @@ const Vehiculos =()=> {
 
     console.log("TEST en Vehiculos: ", store.vehicles)
 
-    const getItemId = (item) =>{
-        const id = item.split('/').pop(); 
-        return id.toString();
-        console.log("PROBRANDO LA FUNCION GETITEMID: ", item, id)
-    }
-
     const stylePadre = {
         width: "100%",
         overflowX: "scroll",
@@ -47,8 +41,8 @@ const Vehiculos =()=> {
                 {store.vehicles.map((item, index) => (  
                     <div key={index} className="card mx-3" style={{ width: "400px", minWidth: "300px", display: "inline-block" }} >
                             <div key={index} className="bg-secondary d-flex flex-row justify-content-center align-items-center" style={{ width: "100%", height: "200px" }}>
-                            {/* <img src="https://starwars-visualguide.com/assets/img/characters/1.jpg" className="card-img-top" alt="..." style={{ fontWeight: "bold", fontSize: "25px" }}/> */}
-                                <p style={{ fontWeight: "bold", fontSize: "25px" }} className="text-light">400x200</p>
+                            <img src={ `https://starwars-visualguide.com/assets/img/vehicles/${item.id}.jpg` } className="card-img-top" alt="..." style={{ fontWeight: "bold", fontSize: "25px" }}/>
+                                {/* <p style={{ fontWeight: "bold", fontSize: "25px" }} className="text-light">400x200</p> */}
                             </div>
 
                             <div key={index} className="card-body">
@@ -59,7 +53,6 @@ const Vehiculos =()=> {
                                 <p className="card-text p-0 m-1 col-12">{item.cargo_capacity}</p>
                                 <p className="card-text p-0 m-1 col-12">{item.manufacturer}</p>
                                 <p className="card-text p-0 m-1 col-12">{item.url}</p>
-                                <p className="card-text p-0 m-1 col-12">{() => getItemId(item.url)}</p>
                                 
                                 <div className="d-flex flex-row justify-content-between">
 

@@ -79,35 +79,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 		},
 		// EMPIEZA DESDE >> 81 a 110  VEHICLES >>> MATIAS
+
+		getIdfromUrl: itemUrl => { // RECIBE UNA URL ej. https://swapi.dev/api/vehicles/4/ y le saca el numero 👹 
+			const urlParts = itemUrl.split('/') // separa la string que llega por los / que tenga y devuelve un array de stringsssss ✨
+			return urlParts[urlParts.length - 2] // VAMO LOS PIBEEE FUNCIONAAAAA 👹
+		  },
+	
 		obtenerVehiculos: async () => {
-
-				
 			try {
-				const response = await fetch(`https://swapi.dev/api/vehicles/`)
-				const data = await response.json()
-				setStore({vehicles: data.results })
-				// console.log("data Vehiculos: ", data.results) // FUNCIONA
+			  const response = await fetch("https://swapi.dev/api/vehicles/")
+			  const data = await response.json()
+	
+			  const vehiculosConId = await Promise.all(
+				data.results.map(async item => { return {...item, id: await getActions().getIdfromUrl(item.url) }
+				})
+			  )
+			  setStore({ vehicles: vehiculosConId });
 			} catch (error) {
-				console.log(error)
+			  console.log(error)
 			}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		},
+
+
+
+
+
+
+
+
+
 		// EMPIEZA DESDE >> 111 a 140  PLANETS >>> JUAN
 		obtenerPlanetas: async () => {
 
