@@ -2,7 +2,6 @@ import React, { useEffect, useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router";
 import {AiOutlineHeart} from "react-icons/ai"
-import { Link } from "react-router-dom";
 
 const Starships = () => {
     const stylePadre = {
@@ -43,6 +42,7 @@ const Starships = () => {
 
     const ShowInfo = (uid) => {
         navigate(`/infoPageYoselin/${uid}`);
+        console.log(uid);
     };
 
     return (
@@ -54,7 +54,7 @@ const Starships = () => {
                         <span className="visually-hidden">Loading...</span>
                     </div>
                 ) : (
-                    starshipsData.map((info) => (
+                    starshipsData.map((info, uid) => (
                         <div
                             className="card mx-3"
                             style={{
@@ -89,7 +89,7 @@ const Starships = () => {
                                 </p>
                                 <div className="d-flex flex-row justify-content-between">
                                     <a
-                                        onClick={() => ShowInfo(info.uid)}
+                                        onClick={() => ShowInfo(uid+1)}
                                         href="#"
                                         className="btn btn-outline-primary"
                                     >
@@ -101,7 +101,7 @@ const Starships = () => {
                                         }
                                         className="btn btn-outline-warning ml-auto"
                                     >
-                                         <AiOutlineHeart  />
+                                         <AiOutlineHeart/>
                                     </button>
                                 </div>
                             </div>
