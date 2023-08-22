@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 // CARD + MAP
 
 const Peliculas = () => {
@@ -25,8 +26,9 @@ const Peliculas = () => {
                 <div className="card-body">
                     <h5 className="card-title">{items.title} </h5>
                     <p className="card-text">{items.opening_crawl} </p>
-                    <a href="#" className="btn btn-outline-primary">Learn More</a>
+                    <Link to={"/infoPageKarol/"+(items.id) }className="btn btn-outline-primary">Learn More</Link>
                 </div>
+            
             </div>
             ))}
             </div>
