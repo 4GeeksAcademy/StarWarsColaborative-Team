@@ -80,7 +80,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		// EMPIEZA DESDE >> 81 a 110  VEHICLES >>> MATIAS
 
-		getIdfromUrl: itemUrl => { // RECIBE UNA URL ej. https://swapi.dev/api/vehicles/4/ y le saca el numero 👹 
+		getIdfromUrl: itemUrl => { // RECIBE UNA URL ej. https: // swapi.dev / api /vehicles / 4 / y le saca el numero 👹 
 			const urlParts = itemUrl.split('/') // separa la string que llega por los / que tenga y devuelve un array de stringsssss ✨
 			return urlParts[urlParts.length - 2] // VAMO LOS PIBEEE FUNCIONAAAAA 👹
 		  },
@@ -100,9 +100,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}
 		},
 
-
-
-
+		getItemById:(id) => {
+			console.log("TESTING .... ", getStore().vehicles.find(item => item.id === id)) // buscamos el objeto en la lista de obj vehiculos
+			return getStore().vehicles
+			//.find(item => item.id === id)
+		},
 
 
 
