@@ -2,8 +2,7 @@ import React ,{useEffect, useState, useContext} from "react";
 import { Context } from "../store/appContext"; 
 import { Link } from "react-router-dom";
 // import { Navigate, useNavigate, useParams } from "react-router";
-
-import { AiFillDingtalkSquare } from 'react-icons/ai';
+import { AiFillDingtalkSquare, AiOutlineHeart } from 'react-icons/ai';
 import { SiStarship } from 'react-icons/si';
 // CARD + MAP
 
@@ -54,8 +53,6 @@ const Vehiculos =()=> {
                                 <p className="card-text p-0 m-1 col-12">{item.crew}</p>
                                 <p className="card-text p-0 m-1 col-12">{item.cargo_capacity}</p>
                                 <p className="card-text p-0 m-1 col-12">{item.manufacturer}</p>
-                                <p className="card-text p-0 m-1 col-12">{item.url}</p>
-                                
                                 <div className="d-flex flex-row justify-content-between">
 
                                 <Link to={`/infoPageMatias/${item.id}`} className="btn btn-outline-primary"> Details</Link>
@@ -64,6 +61,9 @@ const Vehiculos =()=> {
                                 <button onClick={()=>guardarFavoritos(info.name)} className="btn btn-outline-warning ml-auto">
                                     <AiOutlineHeart  />
                                 </button> */}
+                                  <button onClick={()=>actions.guardarFavoritos(item.name)} className="btn btn-outline-warning ml-auto">
+                                    <AiOutlineHeart  />
+                                </button>
 
                                 </div>
                             </div>
