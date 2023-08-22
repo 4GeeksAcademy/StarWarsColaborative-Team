@@ -1,5 +1,6 @@
 import React ,{useEffect, useState, useContext} from "react";
 import { Context } from "../store/appContext"; 
+import { Link } from "react-router-dom";
 
 
 import { AiFillDingtalkSquare } from 'react-icons/ai';
@@ -9,7 +10,7 @@ import { SiStarship } from 'react-icons/si';
 const Vehiculos =()=> {
     const { store, actions } = useContext(Context);
 
-    console.log("TEST en Vehiculos: ", store.vehicles)
+    //console.log("TEST en Vehiculos: ", store.vehicles)
 
     const stylePadre = {
         width: "100%",
@@ -19,6 +20,10 @@ const Vehiculos =()=> {
         maxWidth: "100%",
         display: "flex",
         flexDirection: "row"
+    }
+
+    const ShowDetails = (uid)=> { // cambiar id
+        navigate(`/infoPageMatias/${uid}`)
     }
 
     return(
@@ -60,10 +65,12 @@ const Vehiculos =()=> {
                                  Ir a Detalles
                                 </a>
 
+                                <Link onClick={()=>ShowDetails(info.uid)} href="#" className="btn btn-outline-primary">Learn More</Link>
                                 {/* <a onClick={ShowInfo} href="#" className="btn btn-outline-primary">Learn More</a>
                                 <button onClick={()=>guardarFavoritos(info.name)} className="btn btn-outline-warning ml-auto">
                                     <AiOutlineHeart  />
                                 </button> */}
+
                                 </div>
                             </div>
                     </div>
