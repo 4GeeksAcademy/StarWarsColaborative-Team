@@ -3,7 +3,7 @@ import { object } from "prop-types"
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			
+			film: {},
 			// EMPIEZA DESDE >> vehicles: [{...},{...},{...},{...}]
 			favoritos: [],
 			peoples: [],
@@ -143,30 +143,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 			  const response = await fetch(url);
 			  const data = await response.json();
 				console.log(data)
-			  setStore({ films: data.results });
+				data.results.map((item, index)=>{
+					const id = index+1
+					return setStore({...getStore(),films:[...getStore().films,{...item,id:id}]})
+				})
 			} catch (error) {
 			  console.error('Ocurrió un error:', error);
 			}
 		},
-		  
 
+		obtenerPeliculaIndividual: async (id) => {
+			const url = 'https://swapi.dev/api/films/';
+			console.log(id)
+			try {
+			  const response = await fetch(url+id);
+			  const data = await response.json();
+				console.log(data)	
+			  setStore({ film: data });
+			} catch (error) {
+			  console.error('Ocurrió un error:', error);
+			}
 			
+		},
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
-		// EMPIEZA DESDE >> 171 a 200  STARSHIPS >>> YOSELIN
+        // EMPIEZA DESDE >> 171 a 200  STARSHIPS >>> YOSELIN
 		obtenerNaves: async () => {
 
 
