@@ -140,6 +140,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 		  
 		// EMPIEZA DESDE >> 141 a 170  FILMS >>> KAROL
 		obtenerPeliculas: async () => {
+			const url = 'https://swapi.dev/api/films';
+			try {
+			  const response = await fetch(url);
+			  const data = await response.json();
+				console.log(data)
+			  setStore({ films: data.results });
+			} catch (error) {
+			  console.error('Ocurrió un error:', error);
+			}
+		},
+		  
+
 			
 
 
@@ -155,20 +167,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-		},
+		
 		// EMPIEZA DESDE >> 171 a 200  STARSHIPS >>> YOSELIN
 		obtenerNaves: async () => {
 
