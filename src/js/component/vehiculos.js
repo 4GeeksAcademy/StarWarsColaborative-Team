@@ -1,15 +1,15 @@
 import React ,{useEffect, useState, useContext} from "react";
 import { Context } from "../store/appContext"; 
 import { Link } from "react-router-dom";
-
+// import { Navigate, useNavigate, useParams } from "react-router";
 
 import { AiFillDingtalkSquare } from 'react-icons/ai';
 import { SiStarship } from 'react-icons/si';
 // CARD + MAP
 
 const Vehiculos =()=> {
-    const { store, actions } = useContext(Context);
-
+    const {store,actions} = useContext(Context)
+    //const navigate = useNavigate()
     //console.log("TEST en Vehiculos: ", store.vehicles)
 
     const stylePadre = {
@@ -20,10 +20,6 @@ const Vehiculos =()=> {
         maxWidth: "100%",
         display: "flex",
         flexDirection: "row"
-    }
-
-    const ShowDetails = (uid)=> { // cambiar id
-        navigate(`/infoPageMatias/${uid}`)
     }
 
     return(
@@ -61,11 +57,8 @@ const Vehiculos =()=> {
                                 
                                 <div className="d-flex flex-row justify-content-between">
 
-                                <a href="#" className="btn btn-primary">
-                                 Ir a Detalles
-                                </a>
-
-                                <Link onClick={()=>ShowDetails(info.uid)} href="#" className="btn btn-outline-primary">Learn More</Link>
+                                <Link to={`/infoPageMatias/${item.id}`} className="btn btn-outline-primary"> Details</Link>
+                                {/* <Link onClick={()=>ShowDetails(item.id)} href="#" className="btn btn-outline-primary">Learn More</Link> */}
                                 {/* <a onClick={ShowInfo} href="#" className="btn btn-outline-primary">Learn More</a>
                                 <button onClick={()=>guardarFavoritos(info.name)} className="btn btn-outline-warning ml-auto">
                                     <AiOutlineHeart  />
@@ -77,37 +70,6 @@ const Vehiculos =()=> {
                 ))} 
                 </div>
             </div>
-
-            {/* {store.vehicles.map((item, index) => (
-            <div key={index} className="card" style={{width: '18rem'}}>
-                <img src="https://starwars-visualguide.com/assets/img/characters/1.jpg" className="card-img-top" alt="..." />
-                <div className="card-body">
-                <h5 className="card-title">{item.name}</h5>
-                <p className="card-text">{item.model}</p>
-                <p className="card-text">{item.vehicle_class}</p>
-                <p className="card-text">{item.crew}</p>
-                <p className="card-text">{item.cargo_capacity}</p>
-                <p className="card-text">{item.manufacturer}</p>
-
-                <a href="#" className="btn btn-primary">
-                    Ir a Detalles
-                </a>
-                </div>
-            </div>
-
-            ))} 
-            */}
-
-            {/* // EJEMPLO de CONCATS:
-            // {store.contacts.map((item, index) => (
-			// 				<ContactCard
-			// 					key={index}
-			// 					contactito={item}
-			// 					onDelete={() => setState({ showModal: true, id: item.id })}
-			// 					handleModify={() => setModifyState({ showModalModify: true, object: item })}
-			// 				/>
-            // ))} */}
-
 
         </div>
     )
