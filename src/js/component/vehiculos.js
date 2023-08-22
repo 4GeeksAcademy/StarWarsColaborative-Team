@@ -36,7 +36,9 @@ const Vehiculos =()=> {
             "cargo_capacity": "50000" 
             */}
 
-            <div className="row">
+            <div className="row py-5">
+                <h1 className="text-danger">Vehicles</h1>
+
                 <div className="col-12 " style={stylePadre}>
                     
                 {store.vehicles.map((item, index) => (  

@@ -22,7 +22,7 @@ console.log("hola")
         <div>
             <h1 className="text-danger">Films</h1>
             <div className="card-group">
-            <div className="d-flex flex-row overflow-scroll">
+            <div className="d-flex flex-row overflow-scroll py-5">
             {store.films.map((items,id)=>(
             <div className="card" style={{ width: "18rem", flex: "none", margin: "10px"}}>
                 <img src={"https://starwars-visualguide.com/assets/img/films/"+(id+1)+".jpg" }className="card-img-top" alt="..." />
