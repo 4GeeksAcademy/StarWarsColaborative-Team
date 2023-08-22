@@ -12,11 +12,8 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-light bg-light mb-3 mx-3">
 			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
+				<img width="60" height="60" src="https://img.icons8.com/ios/100/star-wars.png" alt="star-wars"/>
 			</Link>
-			<div onClick={()=> navigate("/infoPage")} className="btn btn-primary">
-				InfoPage
-			</div>
 			<div className="ml-auto">
 				<div className="dropdown" >
 					<button className="btn btn-primary dropdown-toggle"  type="button" data-bs-toggle="dropdown" aria-expanded="false">

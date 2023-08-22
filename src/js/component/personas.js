@@ -35,10 +35,9 @@ const Personas =()=> {
             
             {
                 peoples[0]? peoples.map((info,index)=> {
-                    return <div key={index} className="card mx-3" style={{ width: "400px", minWidth: "300px", display: "inline-block" }} >
-                    <div className="bg-secondary d-flex flex-row justify-content-center align-items-center" style={{ width: "100%", height: "200px" }}>
-                        <img src={`https://starwars-visualguide.com/assets/img/characters/${info.uid}.jpg`} style={{width:"100%",height:"200px"}}/>
-                        
+                    return <div key={index} className="card mx-3 animate_animated animate_fadeInLeft" style={{ width: "400px", minWidth: "300px", display: "inline-block" }} >
+                    <div className="bg-secondary d-flex flex-row justify-content-center align-items-center" style={{ width: "100%" }}>
+                        <img src={`https://starwars-visualguide.com/assets/img/characters/${info.uid}.jpg`} style={{width:"100%"}}/>
                     </div>
                     <div className="card-body">
                         <h5 className="card-title">{info.name}</h5>

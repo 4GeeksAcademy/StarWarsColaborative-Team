@@ -41,8 +41,6 @@ const InfoPageRodrigo =()=> {
                             <div className="row"><p><strong className="text-danger opacity-50">Gender</strong>:{PageInfo.gender}</p></div>
                         </div>
                         <div className="col-6"></div>
-
-
                     </div>
                     <div className="row">
                         <div className="col-2">
