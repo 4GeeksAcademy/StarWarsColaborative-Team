@@ -108,8 +108,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
-
-
 		// EMPIEZA DESDE >> 111 a 140  PLANETS >>> JUAN
 		obtenerPlanetas: async () => {
 			const url = 'https://www.swapi.tech/api/planets';
@@ -138,8 +136,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
-
-		  
 		// EMPIEZA DESDE >> 141 a 170  FILMS >>> KAROL
 		obtenerPeliculas: async () => {
 			const url = 'https://swapi.dev/api/films';
