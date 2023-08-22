@@ -136,6 +136,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
+
+		  
 		// EMPIEZA DESDE >> 141 a 170  FILMS >>> KAROL
 		obtenerPeliculas: async () => {
 			const url = 'https://swapi.dev/api/films';
