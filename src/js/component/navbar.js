@@ -10,14 +10,14 @@ export const Navbar = () => {
 
 	const navigate = useNavigate()
 	return (
-		<nav className="navbar navbar-light bg-light mb-3 mx-3">
+		<nav className="navbar navbar-light bg-light py-0 px-5 bg-dark">
 			<Link to="/">
-				<img width="60" height="60" src="https://img.icons8.com/ios/100/star-wars.png" alt="star-wars"/>
+				<img width="60" height="60" src="https://img.icons8.com/color/96/000000/star-wars.png" alt="star-wars"/>
 			</Link>
 			<div className="ml-auto">
 				<div className="dropdown" >
-					<button className="btn btn-primary dropdown-toggle"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
-						Favoritos <span class="badge bg-secondary">{favoritos.length}</span>
+					<button className="btn btn-warning dropdown-toggle"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Favoritos <span class="badge bg-dark">{favoritos.length}</span>
 					</button>
 					<div className="dropdown-menu dropdown-menu-end row p-2 " style={{width:"250px"}}>
 						<h3>Favoritos</h3>

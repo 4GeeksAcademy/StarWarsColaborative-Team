@@ -22,7 +22,7 @@ const Layout = () => {
 	const basename = process.env.BASENAME || "";
 
 	return (
-		<div className="container-fluid">
+		<div className="mx-0">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Navbar />
@@ -31,7 +31,7 @@ const Layout = () => {
 						<Route path="/infoPage" element={<InfoPage />} />
 
 						<Route path="/infoPageRodrigo/:theid" element={<InfoPageRodrigo />} />
-						<Route path="/infoPageMatias" element={<InfoPageMatias />} />
+						<Route path="/infoPageMatias/:theid" element={<InfoPageMatias />} />
 						<Route path="/infoPageJuan/:theid" element={<InfoPageJuan />} />
 						<Route path="/infoPageKarol/:theid" element={<InfoPageKarol />} />
 						<Route path="/infoPageYoselin" element={<InfoPageYoselin />} />

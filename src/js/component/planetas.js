@@ -24,7 +24,7 @@ const Planetas = () => {
   };
 
   return (
-    <div className="row">
+    <div className="row py-5">
       <h1 className="text-danger">Planets</h1>
       <div style={stylePadre}>
         {planetas.map((planet) => (
