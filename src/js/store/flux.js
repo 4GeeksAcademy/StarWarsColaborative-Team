@@ -212,6 +212,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(error)
 			}
 		},
+
+		// FAVORITOS
 		BorrarFavorito:(elements)=> {
 			const Favs = getStore().favoritos
 
@@ -222,7 +224,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 			setStore({...getStore(),favoritos:newArr})
 		}
 
-		}
+		},
+
+		// LOGIN
+		userLogin: async () => {
+			try {
+				
+			  const response = await fetch("https://swapi.dev/api/vehicles/")
+			  const data = await response.json()
+	
+			  const vehiculosConId = await Promise.all(
+				data.results.map(async item => { return {...item, id: await getActions().getIdfromUrl(item.url) }
+				})
+			  )
+			  setStore({ vehicles: vehiculosConId });
+			} catch (error) {
+			  console.log(error)
+			}
+		},
+
+
+
+
+
+
+
+
+
+
+
+
 	}
 }
 
