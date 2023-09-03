@@ -5,7 +5,7 @@ const SignupButton = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    navigate('/login'); 
+    navigate('/signup'); 
   }
 
   return (

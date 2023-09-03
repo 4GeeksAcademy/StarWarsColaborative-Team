@@ -1,4 +1,5 @@
 import { object } from "prop-types"
+import axios from "axios"
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -20,6 +21,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// EMPIEZA DESDE >> 21 a 50  FAVORITOS >>> RODRI
 			guardarFavoritos: async (NameFav) => {
+
+				const token = localStorage.getItem('token');
+
+				if(!token) {
+				throw new Error('No autorizado');
+				}
+
 				let existElement = false
 				getStore().favoritos.map((element) => {
 					if (NameFav === element) {
@@ -196,8 +204,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
-
-
 			},
 			// EMPIEZA DESDE >> 201 a 200  Funcion que filtre datos en base a id >>> Rodrigo
 			TraerInfoEspesifica: async (uid, tipo) => {
@@ -225,8 +231,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ ...getStore(), favoritos: newArr })
 			},
 
-			loginUser: (email,password) =>{
+			// LOGIN
+			loginUser: async (email,password) =>{
 				console.log(" FLUX USER LOGIN: ", email, " >>>> ", password )
+				// https://fuzzy-fiesta-749rg547pxpcpjjj-3000.app.github.dev/login
+				//     {"email": "matias","password": "matias" }
+				try {
+					let data = await axios.post("https://fuzzy-fiesta-749rg547pxpcpjjj-3000.app.github.dev/login",  
+					{"email": email,"password": password })
+					localStorage.setItem("token", data.data.access_token) // guardamos el token en el almacenamiento local
+				} catch (error) {
+					console.log(error)
+				}
+
 			}
 
 

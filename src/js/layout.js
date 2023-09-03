@@ -14,7 +14,7 @@ import InfoPageJuan from "./views/infoPageJuan";
 import InfoPageKarol from "./views/infoPageKarol";
 import InfoPageYoselin from "./views/infoPageYoselin";
 import Login from "./views/login";
-//import Signup from "./views/login";
+import Signup from "./views/signup";
 
 
 
@@ -35,6 +35,7 @@ const Layout = () => {
 						<Route path="/" element={<Home />} />
 						<Route path="/infoPage" element={<InfoPage />} />
 						<Route path="/login" element={<Login />} />
+						<Route path="/signup" element={<Signup />} />
 
 						<Route path="/infoPageRodrigo/:theid" element={<InfoPageRodrigo />} />
 						<Route path="/infoPageMatias/:theid" element={<InfoPageMatias />} />

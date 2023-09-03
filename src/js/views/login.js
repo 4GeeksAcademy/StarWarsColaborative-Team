@@ -18,6 +18,7 @@ const Login = () => {
         actions.loginUser(email, password)
         //navigate('/home') <<< ver esto para navegar a la pagina principal si todo sale bien
         console.log("apretaron login", email, " >>> ", password)
+        navigate('/home')
         }
 
     const letras = {color: "white"};
