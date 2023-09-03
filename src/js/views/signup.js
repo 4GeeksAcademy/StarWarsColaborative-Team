@@ -6,7 +6,6 @@ const Signup = () => {
 
     const { store, actions } = useContext(Context)
 
-    
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -14,13 +13,12 @@ const Signup = () => {
 
     const navigate = useNavigate();
 
-    console.log("estoy en login");
-
-    const handleLogin = (e) => {
+    const handleSignup = (e) => {
         e.preventDefault()
-        actions.loginUser(email, password)
+        actions.SignupUser(username,email, password, isActive)
         //navigate('/home') <<< ver esto para navegar a la pagina principal si todo sale bien
-        console.log("apretaron login", email, " >>> ", password)
+        console.log("apretaron signup", username, ">>>", email, " >>> ", password," >>> ",isActive)
+        navigate('/login')
         }
 
     const letras = {color: "white"};
@@ -103,7 +101,7 @@ const Signup = () => {
                     <label className="form-check-label mb-3" htmlFor="exampleCheck1">light saber on? </label>
                 </div>
 
-                <button onClick={handleLogin} type="submit" className="btn btn-warning">
+                <button onClick={handleSignup} type="submit" className="btn btn-warning">
                 Submit new Jedi
                 </button>
 

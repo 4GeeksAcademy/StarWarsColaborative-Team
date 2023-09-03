@@ -15,10 +15,10 @@ const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault()
-        actions.loginUser(email, password)
+        actions.LoginUser(email, password)
         //navigate('/home') <<< ver esto para navegar a la pagina principal si todo sale bien
         console.log("apretaron login", email, " >>> ", password)
-        navigate('/home')
+        navigate('/')
         }
 
     const letras = {color: "white"};

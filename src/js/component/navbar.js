@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { MdDelete } from "react-icons/md"
@@ -8,10 +8,18 @@ import SignupButton from "./signupButton";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context)
+
+
 	const { favoritos } = store
 	const { BorrarFavorito } = actions
 
 	const navigate = useNavigate()
+	const [token, setToken] = useState(null); // TODO necesito desaparecer los botones
+
+	useEffect(() => {
+		const token = localStorage.getItem("token");
+		setToken(token);
+	}, []);
 
 	return (
 		<nav className="navbar navbar-light bg-light py-0 px-5 bg-dark">
@@ -19,14 +27,14 @@ export const Navbar = () => {
 				<img width="60" height="60" src="https://img.icons8.com/color/96/000000/star-wars.png" alt="star-wars" />
 			</Link>
 
-			
-			
-			
 			<div className="ml-auto d-flex">
-				{/* nos lleva a >> views/login  */}
+				
+			{!token && (
+				<div className="ml-auto d-flex">
 				<LoginButton />
-				{/* nos lleva a >> views/signup  */}
-				<SignupButton /> 
+				<SignupButton />
+				</div>
+			)}
 
 				<div className="dropdown" >
 					<button className="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -23,31 +23,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 			guardarFavoritos: async (NameFav) => {
 
 				const token = localStorage.getItem('token');
-
-				if(!token) {
-				throw new Error('No autorizado');
+				if(token === null) {
+					//throw new Error('No autorizado');
+					alert("Para favoritos tu tener, registrado estar debes")
 				}
+				else{
+					let existElement = false
+					getStore().favoritos.map((element) => {
+						if (NameFav === element) {
+							return existElement = true
+						}
+					})
 
-				let existElement = false
-				getStore().favoritos.map((element) => {
-					if (NameFav === element) {
-						return existElement = true
+					if (existElement === false) {
+						setStore({ ...getStore(), favoritos: [...getStore().favoritos, NameFav] })
 					}
-				})
-
-				if (existElement === false) {
-					setStore({ ...getStore(), favoritos: [...getStore().favoritos, NameFav] })
 				}
-
-
-
-
-
-
-
-
-
-
+		
 
 
 
@@ -108,7 +100,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error)
 				}
 			},
-
 
 
 
@@ -232,23 +223,44 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			// LOGIN
-			loginUser: async (email,password) =>{
+			LoginUser: async (email,password) =>{
 				console.log(" FLUX USER LOGIN: ", email, " >>>> ", password )
 				// https://fuzzy-fiesta-749rg547pxpcpjjj-3000.app.github.dev/login
 				//     {"email": "matias","password": "matias" }
 				try {
 					let data = await axios.post("https://fuzzy-fiesta-749rg547pxpcpjjj-3000.app.github.dev/login",  
-					{"email": email,"password": password })
+								{"email": email,"password": password }
+								)
+
 					localStorage.setItem("token", data.data.access_token) // guardamos el token en el almacenamiento local
 				} catch (error) {
 					console.log(error)
 				}
 
+			},
+
+			// SIGNUP
+			SignupUser: async (username, email,password, is_active) =>{
+				console.log(" FLUX USER LOGIN: ", email, " >>>> ", password )
+				// https://fuzzy-fiesta-749rg547pxpcpjjj-3000.app.github.dev/signup <<<<
+				// {"username" : "matias", "email" : "matias","password" : "matias", "is_active": true}
+				try {
+					let data = await axios.post("https://fuzzy-fiesta-749rg547pxpcpjjj-3000.app.github.dev/signup",  
+								{
+								"username": username,
+								"email": email,
+								"password": password,
+								"is_active": is_active
+								}
+								
+					)
+					console.log(data)
+					//localStorage.setItem("token", data.data.access_token) // guardamos el token en el almacenamiento local
+				} catch (error) {
+					console.log(error)
+				}
+
 			}
-
-
-
-
 
 		},
 
