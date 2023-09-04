@@ -13,6 +13,11 @@ import InfoPageMatias from "./views/infoPageMatias";
 import InfoPageJuan from "./views/infoPageJuan";
 import InfoPageKarol from "./views/infoPageKarol";
 import InfoPageYoselin from "./views/infoPageYoselin";
+import Login from "./views/login";
+import Signup from "./views/signup";
+
+
+
 
 
 //create your first component
@@ -29,6 +34,8 @@ const Layout = () => {
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/infoPage" element={<InfoPage />} />
+						<Route path="/login" element={<Login />} />
+						<Route path="/signup" element={<Signup />} />
 
 						<Route path="/infoPageRodrigo/:theid" element={<InfoPageRodrigo />} />
 						<Route path="/infoPageMatias/:theid" element={<InfoPageMatias />} />

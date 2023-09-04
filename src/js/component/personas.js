@@ -3,6 +3,7 @@ import {AiOutlineHeart} from "react-icons/ai"
 // CARD + MAP
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router";
+
 const Personas =()=> {
     const stylePadre = {
 		width: "100%",
@@ -22,6 +23,7 @@ const Personas =()=> {
         console.log(store)
 
     },[store])
+    
     const ShowInfo = (uid)=> {
         navigate(`/infoPageRodrigo/${uid}`)
     }
