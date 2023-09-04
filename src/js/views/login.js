@@ -17,7 +17,9 @@ const Login = () => {
         e.preventDefault()
         actions.LoginUser(email, password)
         //navigate('/home') <<< ver esto para navegar a la pagina principal si todo sale bien
-        console.log("apretaron login", email, " >>> ", password)
+        //console.log("apretaron login", email, " >>> ", password)
+
+        
         navigate('/')
         }
 

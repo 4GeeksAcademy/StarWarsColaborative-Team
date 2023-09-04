@@ -12,7 +12,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planets: [],
 			films: [],
 			starships: [],
-			PageInfo: undefined
+			PageInfo: undefined,
+			auth: false
+			
 		},
 		actions: {
 
@@ -50,7 +52,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			// EMPIEZA DESDE >> 51 a 80  PEOPLE >>> RODRI
 			obtenerPersonas: async () => {
-				console.log("xd")
 				try {
 					const resp = await fetch("https://swapi.dev/api/people")
 					const data = await resp.json()
@@ -66,6 +67,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 
 				}
+
 
 
 
@@ -144,7 +146,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					const response = await fetch(url);
 					const data = await response.json();
-					console.log(data)
 					data.results.map((item, index) => {
 						const id = index + 1
 						return setStore({ ...getStore(), films: [...getStore().films, { ...item, id: id }] })
@@ -156,7 +157,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			obtenerPeliculaIndividual: async (id) => {
 				const url = 'https://swapi.dev/api/films/';
-				console.log(id)
 				try {
 					const response = await fetch(url + id);
 					const data = await response.json();
@@ -198,12 +198,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			// EMPIEZA DESDE >> 201 a 200  Funcion que filtre datos en base a id >>> Rodrigo
 			TraerInfoEspesifica: async (uid, tipo) => {
-				console.log(`Estas buscando la api aca https://swapi.dev/api/${tipo}/${uid}`)
+				//console.log(`Estas buscando la api aca https://swapi.dev/api/${tipo}/${uid}`)
 				try {
 					console.log(`Estas buscando la api aca https://swapi.dev/api/${tipo}/${uid}`)
 					const resp = await fetch(`https://swapi.dev/api/${tipo}/${uid}`)
 					const data = await resp.json()
-					console.log(data)
 					setStore({ ...getStore(), PageInfo: data })
 
 				} catch (error) {
@@ -233,15 +232,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 								)
 
 					localStorage.setItem("token", data.data.access_token) // guardamos el token en el almacenamiento local
+					console.log("LOGIN DATA: ", data.data.user.id)
+					//setStore({infoUser:data.data.user.id}) // para favoritos
+					setStore({auth:true})
+
 				} catch (error) {
 					console.log(error)
 				}
 
 			},
 
+			validToken: async () =>{
+				let token = localStorage.getItem("token");
+				try {
+					let data = await axios.get("https://fuzzy-fiesta-749rg547pxpcpjjj-3000.app.github.dev/valid-token", {
+						headers: {'Authorization': 'Bearer ' + token}
+					})					
+					setStore({auth:true})
+
+				} catch (error) {
+					console.log(error)
+					setStore({auth:false})
+				}
+
+			},
+
 			// SIGNUP
 			SignupUser: async (username, email,password, is_active) =>{
-				console.log(" FLUX USER LOGIN: ", email, " >>>> ", password )
+				console.log(" FLUX USER SIGNUP: ", email, " >>>> ", password )
 				// https://fuzzy-fiesta-749rg547pxpcpjjj-3000.app.github.dev/signup <<<<
 				// {"username" : "matias", "email" : "matias","password" : "matias", "is_active": true}
 				try {
@@ -255,9 +273,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 								
 					)
 					console.log(data)
+					setStore({auth:true})
+
 					//localStorage.setItem("token", data.data.access_token) // guardamos el token en el almacenamiento local
 				} catch (error) {
 					console.log(error)
+					setStore({auth:false})
 				}
 
 			}

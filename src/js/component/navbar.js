@@ -14,12 +14,7 @@ export const Navbar = () => {
 	const { BorrarFavorito } = actions
 
 	const navigate = useNavigate()
-	const [token, setToken] = useState(null); // TODO necesito desaparecer los botones
-
-	useEffect(() => {
-		const token = localStorage.getItem("token");
-		setToken(token);
-	}, []);
+	
 
 	return (
 		<nav className="navbar navbar-light bg-light py-0 px-5 bg-dark">
@@ -29,12 +24,12 @@ export const Navbar = () => {
 
 			<div className="ml-auto d-flex">
 				
-			{!token && (
-				<div className="ml-auto d-flex">
-				<LoginButton />
-				<SignupButton />
-				</div>
-			)}
+				{!store.auth ? (
+					<div className="ml-auto d-flex">
+					<LoginButton />
+					<SignupButton />
+					</div>
+				) : null}
 
 				<div className="dropdown" >
 					<button className="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
